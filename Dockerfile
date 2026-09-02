@@ -69,13 +69,6 @@ RUN source /etc/environment && \
     conda clean -afy && \
     rm -rf /opt/conda/pkgs
 
-# CocoaPods（不区分架构，但需要安装ruby和相关依赖）
-RUN gem install cocoapods --no-document && \
-    gem install cocoapods-gitee-repo --no-document && \
-    gem cleanup && \
-    rm -rf /usr/lib/ruby/gems/*/cache/*.gem && \
-    rm -rf /root/.gem
-
 # Nerdctl
 RUN source /etc/environment && \
     curl -fL -o nerdctl.tgz \
