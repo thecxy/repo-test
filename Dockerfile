@@ -11,8 +11,10 @@ ENV TZ=Asia/Shanghai \
     HELM_VERSION=3.14.4 \
     DOCKER_TLS_CERTDIR="" \
     Nerdctl_VERSION=1.7.5 \
+    MAMBA_ROOT_PREFIX=/opt/conda \
     DEBIAN_FRONTEND=noninteractive \
-    ZSH=/root/.oh-my-zsh 
+    ZSH=/root/.oh-my-zsh \
+    PATH=/opt/conda/bin:$PATH
 
 # 集中架构判断（仅此一处）
 # ARCH_TAG is used by various tools (go, helm, nerdctl, etc.)
@@ -68,7 +70,6 @@ RUN source /etc/environment && \
 # 激活conda base环境
     . /opt/conda/etc/profile.d/conda.sh && conda activate base && \
     pip install --no-cache-dir twine build  && \
-    conan profile detect --force && \
     conda clean -afy && \
     rm -rf /opt/conda/pkgs
 
