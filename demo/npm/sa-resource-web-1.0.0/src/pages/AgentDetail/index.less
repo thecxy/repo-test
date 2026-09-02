@@ -1,0 +1,54 @@
+@containerWidth: calc(1440px - 24px * 2);
+.agent-detail-container {
+    background-color: #FBFBFB;
+    .top {
+        background-color: #FFF;
+        padding: 20px 24px 0 24px;
+
+        :global {
+            .ant-page-header-back,
+            .ant-page-header-back svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    .inner {
+        flex:1;
+        .flex-justify-content-center;
+    }
+
+    :global {
+        .ant-tabs-nav {
+            background-color: #FFF;
+        }
+        .agent-detail-outer-tabs {
+            padding-bottom: 100px;
+            min-height: ~"calc(100vh - 60px - 30px - 48px)";
+        }
+
+        .ant-tabs-content-holder {
+            overflow: auto;
+            background-color: #FBFBFB;
+        }
+
+        .ant-tabs-nav {
+            padding: 10px 24px 0 24px;
+            margin-bottom: 0 !important;
+        }
+
+        .ant-tabs-tabpane {
+            background: #FBFBFB;
+            padding: 16px 8px 0;
+        }
+
+        .ant-page-header-back {
+            cursor: pointer;
+        }
+
+        .osc-sa-resource .ant-tabs-top > .ant-tabs-nav::before, .osc-sa-resource .ant-tabs-bottom > .ant-tabs-nav::before, .osc-sa-resource .ant-tabs-top > div > .ant-tabs-nav::before, .osc-sa-resource .ant-tabs-bottom > div > .ant-tabs-nav::before {
+            border-bottom: 2px solid #f0f0f0;
+        }
+    }
+}

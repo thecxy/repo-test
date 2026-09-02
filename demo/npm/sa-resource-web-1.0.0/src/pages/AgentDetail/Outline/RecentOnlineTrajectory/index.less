@@ -1,0 +1,27 @@
+.agent-config-container {
+    background: #FFF;
+    box-shadow: 0 1px 1px 0 rgba(9, 30, 66, 0.2500), 0 0 1px 0 rgba(9, 30, 66, 0.3100);
+    padding: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    transition: all 250ms cubic-bezier(0.02, 0.01, 0.47, 1);
+
+    &:hover {
+        cursor: pointer;
+        transform: translate(0, -5px);
+        transition-delay: 0s;
+    }
+
+    .title {
+        font-size: 16px;
+        font-weight: 500;
+        color: #1E2A3D;
+        line-height: 24px;
+        margin-bottom: 16px;
+    }
+
+    .content {
+        .flex-justify-content-flex-start;
+        flex-wrap: wrap;
+    }
+}

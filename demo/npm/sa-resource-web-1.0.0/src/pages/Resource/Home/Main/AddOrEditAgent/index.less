@@ -1,0 +1,112 @@
+:global {
+    .add-edit-agent-modal {
+        border-radius: 4px;
+
+        .ant-modal-body {
+            display: flex;
+            padding: 0 !important;
+        }
+
+        // .ant-modal-close {
+        //     top: 6px;
+        // }
+    }
+}
+
+.side-bar {
+    width: 200px;
+    padding: 24px;
+    //height: 652px;
+    background: #FBFBFB;
+    border-right: 1px solid #E9EAEC;
+    border-radius: 4px 0 0 4px;
+
+    :global {
+        .ant-menu-item {
+            height: 30px !important;
+            line-height: 30px !important;
+        }
+    }
+}
+
+.main {
+    flex: 1;
+    min-height: 560px;
+    //overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .agent-type-select {
+        padding: 0 24px;
+        .flex-align-item-center;
+        .flex-justify-content-space-between;
+        height: 72px;
+        border-bottom: 2px solid #ECEDF0;
+        margin-right: 20px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1E2A3D;
+
+        :global {
+            .ant-radio-group {
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    .main-content {
+        flex: 1;
+        display: flex;
+        padding-bottom: 24px;
+    }
+}
+
+.step-css {
+    margin-top: 29px !important;
+
+    :global {
+        .ant-progress-inner {
+            width: 29px !important;
+            height: 29px !important;
+        }
+
+        .ant-steps-item-tail {
+            left: 10px !important;
+        }
+
+        .ant-steps-item-icon {
+            border: none;
+            margin-right: 8px !important;
+            width: 20px !important;
+            height: 20px !important;
+            font-size: 12px !important;
+            font-weight: 500;
+            line-height: 20px !important;
+        }
+        .ant-steps-item-active {
+            .ant-steps-item-title {
+                font-weight: 600 !important;
+            }
+            
+        }
+
+        .ant-steps-item.ant-steps-item-wait {
+            .ant-steps-item-title {
+                color: #1E2A3D !important;
+            }
+
+            .ant-steps-item-icon {
+                background-color: #D0D2D7;
+
+                > .ant-steps-icon {
+                    color: #1E2A3D;
+                }
+            }
+        }
+
+        .ant-progress-inner:not(.ant-progress-circle-gradient) .ant-progress-circle-path {
+            stroke: var(--theme-primary-color) !important;
+        }
+    }
+}

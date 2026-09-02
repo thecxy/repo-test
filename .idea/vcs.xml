@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/demo/cocoapods/AFNetworking" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/demo/go/go-kong" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/demo/huggingface" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/demo/maven/opera-platform-boot" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/demo/pypi/python-rtmbot" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/demobak/hugging_face" vcs="Git" />
+  </component>
+</project>

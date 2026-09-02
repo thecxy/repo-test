@@ -1,0 +1,21 @@
+.side-container {
+    position: relative;
+    height: 100%;
+}
+
+.resize-wrapper {
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    user-select: none;
+    cursor: col-resize;
+    z-index: inherit;
+
+    &:hover,
+    &.active-line {
+        border-left: 2px solid #0c62ff;
+    }
+}
+

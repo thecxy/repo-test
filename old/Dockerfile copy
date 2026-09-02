@@ -1,0 +1,38 @@
+FROM alpine:latest AS build
+
+ENV MAVEN_VERSION=3.9.6 \
+    NODE_VERSION=18 \
+    GO_VERSION=1.21.5 \
+    PATH="/usr/local/go/bin:/root/.npm-global/bin:$PATH" \
+    NPM_CONFIG_PREFIX=/root/.npm-global
+
+RUN apk add --no-cache \
+        openjdk17 \
+        maven \
+        nodejs npm \
+        curl \
+        helm \
+    && apk add --no-cache --update ca-certificates \
+    && update-ca-certificates \
+    && curl -fsSL https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xzf - \
+    && rm -rf /usr/local/go/test /usr/local/go/doc /usr/local/go/misc /usr/local/go/pkg/mod/cache \
+    && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /root/.m2
+
+FROM alpine:latest
+
+COPY --from=build /usr/local/go /usr/local/go
+COPY --from=build /usr/lib/jvm/java-17-openjdk /usr/lib/jvm/java-17-openjdk
+COPY --from=build /usr/bin/mvn /usr/bin/mvn
+COPY --from=build /usr/bin/node /usr/bin/node
+COPY --from=build /usr/bin/helm /usr/bin/helm
+
+COPY demo/  /opt/demo/
+
+ENV PATH="/usr/local/go/bin:$PATH" \
+    JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+
+
+WORKDIR /opt
+
+
+CMD ["sh"]

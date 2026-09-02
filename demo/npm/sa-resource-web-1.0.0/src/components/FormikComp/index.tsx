@@ -1,0 +1,213 @@
+/* eslint-disable */
+// @ts-nocheck
+/**
+ * formik 表单与 antd 的二次封装
+ */
+
+import I18N from '@src/i18n'
+import { Formik } from 'formik'
+import React, { createRef, ReactNode, useRef } from 'react'
+import { isEqual, set } from 'lodash/fp'
+import * as yup from 'yup'
+import { omit } from 'ramda'
+import { Button, Collapse, Space } from 'antd'
+
+import FormField from '../FormField'
+import { defaultFooterContainer, formikContainer } from './index.module.less'
+import { debounceWith250ms } from '@src/utils'
+import { FormFields } from '@com/FormikComp/formikComp'
+import ExecutiveLog from '@src/pages/Resource/components/ExecutiveLog'
+
+const { Panel } = Collapse
+type FormikCompProps = {
+    initialValues: unknown,
+    handleSubmit: (e: AnyType) => void,
+    formFields: FormFields,
+    Footer?: ReactNode,
+    disabled: boolean,
+    setDisabled: React.Dispatch<React.SetStateAction<boolean>>,
+    needFooter?: boolean,
+    handleCancel?: () => void,
+    okText?: string | ReactNode,
+    transformRef?: null | ((form: HTMLFormElement) => void),
+    buttonLoading?: boolean,
+    showLog?:boolean
+}
+/**
+ *
+ * @param initialValues
+ * @param handleOk
+ * @param formFields
+ * @returns {JSX.Element}
+ * @constructor
+ */
+const FormikComp: React.FC<FormikCompProps> = ({
+    initialValues,
+    handleSubmit,
+    formFields,
+    Footer,
+    disabled,
+    setDisabled,
+    needFooter = true,
+    handleCancel,
+    okText = I18N.FormikComp.index.queDing,
+    transformRef,
+    buttonLoading = false,
+    showLog=false
+}) => {
+    const validateObj = Object.values(formFields).reduce((prev, curr) => {
+        if (!curr.hide) {
+            prev[curr.name] = curr.validate
+            if (curr.collapseProps) {
+                curr.collapseProps.formFields.reduce((innerPrev, innerCurr) => {
+                    if (!innerCurr.hide) {
+                        innerPrev[innerCurr.name] = innerCurr.validate
+                    }
+                    return innerPrev
+                }, prev)
+            }
+        }
+        return prev
+    }, {})
+    const refOfValues = createRef()
+
+    const formRef = useRef()
+
+    validateObj.grantGroups = yup.array()
+    const validateSchema = yup.object().shape(validateObj)
+    const handleFinalChange = debounceWith250ms((values, valid) => {
+        setDisabled(!valid)
+    })
+    const validate = values => {
+        try {
+            validateSchema.validateSync(values, { abortEarly: false })
+            return {}
+        } catch (e) {
+            return e?.inner?.reduce((acc, cur) => set(
+                cur.path,
+                // 如果希望某些特定的条件下level不是error，而是warning，
+                // 请修改下面的逻辑，根据yup的返回结果进行适配
+                cur.errors.map(v => ({
+                    level: 'error',
+                    text: v
+                })),
+                acc
+            ), {})
+        }
+    }
+
+    const DefaultFooter = ({ values }) => {
+        return (
+            <div className={defaultFooterContainer}>
+                <Space>
+                    <Button
+                        type={'primary'}
+                        disabled={disabled}
+                        loading={buttonLoading}
+                        onClick={() => handleSubmit(values)}
+                        className={['submit-button', 'button'].join(' ')}
+                    >{okText}
+                    </Button>
+                    <Button
+                        className={'button'}
+                        onClick={handleCancel}
+                    >{I18N.FormikComp.index.quXiao}</Button>
+                </Space>
+            </div>
+        )
+    }
+
+    const FinalFooter = props => {
+        return Footer ? <Footer {...props} /> : <DefaultFooter {...props} />
+    }
+    return (
+        <>
+            <Formik
+                onSubmit={handleSubmit}
+                enableReinitialize
+                validate={validate}
+                initialValues={initialValues}
+            >
+                {form => {
+                    formRef.current = form
+                    const { values } = form
+                    const valid = validateSchema.isValidSync(values)
+                    if (!refOfValues.current || (refOfValues.current && !isEqual(refOfValues.current, values))) {
+                        handleFinalChange(values, valid)
+                    }
+                    refOfValues.current = values
+                    transformRef && transformRef(form)
+
+                    return (
+                        <div className={formikContainer}>
+                            {
+                                Object.values(formFields).filter(item => !item.hide).map(({
+                                    name,
+                                    label,
+                                    children,
+                                    hide,
+                                    collapseProps,
+                                    ...rest
+                                }) => {
+                                    if (collapseProps) {
+                                        const {
+                                            formFields,
+                                            title,
+                                            autoOpen,
+                                            hideError
+                                        } = collapseProps
+                                        return (
+                                            <Collapse key={title} defaultActiveKey={autoOpen ? title : ''}>
+                                                <Panel header={title} key={title}>
+                                                    {
+                                                        formFields.filter(item => !item.hide).map(item => {
+                                                            const {
+                                                                name,
+                                                                label,
+                                                                children,
+                                                                ...rest
+                                                            } = item
+                                                            return (
+                                                                <FormField
+                                                                    hideError={hideError}
+                                                                    name={name}
+                                                                    label={label}
+                                                                    key={label}
+                                                                    {...omit('validate', rest)}
+                                                                >
+                                                                    {children}
+                                                                </FormField>
+                                                            )
+                                                        })
+                                                    }
+
+                                                </Panel>
+                                            </Collapse>
+                                        )
+                                    }
+                                    return (
+                                        <FormField
+                                            name={name}
+                                            label={label}
+                                            key={label}
+                                            {...omit('validate', rest)}
+                                        >
+                                            {
+                                                children
+                                            }
+                                        </FormField>
+                                    )
+
+                                })
+                            }
+                            {showLog && <ExecutiveLog />}
+                            {needFooter && <FinalFooter values={values} />}
+                        </div>
+                    )
+                }}
+            </Formik>
+        </>
+    )
+}
+
+export default FormikComp

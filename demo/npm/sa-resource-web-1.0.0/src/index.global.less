@@ -1,0 +1,461 @@
+@import "~@osui/theme/dist/theme/vars.css";
+
+html {
+    margin: 0;
+    height: 100%;
+    font-family: PingFangSC-Regular, PingFang Bold, Microsoft YaHei, serif;
+
+    body {
+        color: #2E405E;
+        min-height: 450px;
+        margin: 0;
+
+        :global {
+            #osc-sa-resource {
+                width: 100% !important;
+            }
+
+            .ant-drawer-content-wrapper {
+                margin-top: 48px !important;
+                min-height: ~"calc(100vh - 48px) !important";
+                height: ~"calc(100vh - 48px) !important";
+            }
+
+            // modal drawer 层级优化, 不能覆盖one的顶部菜单 from 徐明星
+            .osc-sa-resource .ant-drawer,
+            .osc-sa-resource .ant-modal-mask {
+                z-index: 800 !important;
+            }
+
+            .osc-sa-resource .ant-form-item {
+                margin-bottom: 8px !important;
+            }
+
+            .osc-sa-resource .ant-form-item-with-help .ant-form-item-explain {
+                min-height: unset !important;
+            }
+
+            .osc-sa-resource .ant-drawer-body,
+            .osc-sa-resource .ant-modal-body {
+                padding: 0 24px;
+            }
+            .osc-sa-resource .ant-drawer-body{
+                padding: 10px 24px;
+            }
+            .osc-sa-resource .ant-modal-content{
+                .ant-modal-close{
+                    .ant-modal-close-x{
+                        .anticon{
+                            padding:4px;
+                            border-radius:4px;
+                            &:hover{
+                                background:#f4f4f5
+                            }
+                        }
+                    }
+                }
+            }
+
+            .osc-sa-resource .ant-modal-header,
+            .osc-sa-resource .ant-modal-footer {
+                border: none;
+            }
+
+            // ProTable 去除 左右padding
+            .ant-pro-card-body {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                padding-bottom: 0 !important;
+            }
+
+            .category-dropdown {
+                width: 100%;
+            }
+
+            .ant-page-header {
+                padding: 0 !important;
+
+                .ant-page-header-heading {
+                    display: flex !important;
+                    justify-content: space-between !important;
+                }
+
+                .ant-page-header-heading-left {
+                    //margin: 0 !important;
+                    //font-weight: 400;
+                    //color: #1e2a3d;
+                    display: flex !important;
+                    align-items: center !important;
+                    margin: 4px 0 !important;
+                    overflow: hidden !important;
+                }
+
+                .ant-page-header-heading-title {
+                    margin-left: 8px !important;
+                    margin-right: 12px !important;
+                    margin-bottom: 0 !important;
+                    color: #2E405E !important;
+                    font-weight: 400 !important;
+                    font-size: 24px !important;
+                    line-height: 32px !important;
+                    overflow: hidden !important;
+                    white-space: nowrap !important;
+                    text-overflow: ellipsis !important;
+                }
+
+                .ant-page-header-heading-sub-title {
+                    margin-right: 12px !important;
+                    color: #00000073 !important;
+                    font-size: 14px !important;
+                    line-height: 1.5715 !important;
+                    overflow: hidden !important;
+                    white-space: nowrap !important;
+                    text-overflow: ellipsis !important;
+                }
+
+                .ant-page-header-heading-extra {
+                    margin: 4px 0 !important;
+                    white-space: nowrap !important;
+                }
+            }
+
+            .ant-select-selector {
+                padding: 4px 15px;
+            }
+
+            .ant-collapse-item .ant-collapse-header {
+                display: flex;
+                align-items: center;
+                padding-left: 12px !important;
+                height: var(--collapse-header-height);
+                margin-top: var(--collpase-item-header-margin-bottom);
+                padding-top: 0;
+                padding-bottom: 0;
+                color: var(--theme-text-color);
+                font-weight: var(--collapse-header-font-weight);
+                font-size: var(--collapse-header-font-size);
+                line-height: var(--collapse-header-height);
+                background: var(--collapse-header-bg);
+                cursor: pointer;
+            }
+
+            .ant-collapse-arrow {
+                top: auto;
+                width: 16px;
+                height: 16px;
+                color: var(--collapse-expand-icon-color);
+                line-height: 0;
+                background: var(--collapse-expand-icon-bg);
+                border-radius: 50%;
+            }
+
+            .ant-collapse-content>.ant-collapse-content-box {
+                padding: 0 !important;
+            }
+
+            .ant-collapse-expand-icon {
+                position: static !important;
+                margin-right: 12px !important;
+                padding: 0 !important;
+            }
+
+            .osui-button.ant-btn-primary[disabled] {
+                svg {
+                    fill: var(--btn-primary-disable-color);
+                }
+            }
+
+            .ant-table-thead th.ant-table-column-sort {
+                background: #FFF !important;
+            }
+
+            td.ant-table-column-sort {
+                background: #FFF !important;
+            }
+
+            .ant-table-tbody>tr.ant-table-row:hover>td {
+                background: var(--table-row-hover-bg) !important;
+            }
+
+            .ant-table-thead>tr>th,
+            .ant-table-tbody>tr:not(.ant-table-measure-row):not(.ant-table-row-level-1)>td {
+                padding: 9px 6px !important;
+
+                .ant-table-column-sorters {
+                    padding: 9px 6px !important;
+                }
+            }
+
+            .ant-table-thead>tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+                display: none;
+            }
+
+            .ant-modal-confirm-confirm {
+                z-index: 10001;
+            }
+
+            // dropdown unset min-width
+            .osc-sa-resource .osui-dropdown {
+                min-width: unset !important;
+            }
+
+            .ant-collapse-content-hidden {
+                display: none !important;
+            }
+
+            .ant-collapse,
+            .ant-collapse-item {
+                border: none !important;
+            }
+
+            //.ant-radio-button-wrapper {
+            //    padding: 0 16px;
+            //}
+
+            //.osc-sa-resource .ant-radio-group {
+            //    //background-color: rgb(245, 246, 248) !important;
+            //    border-radius: 6px;
+            //    padding: 2px;
+            //    box-sizing: border-box;
+            //}
+
+            //.osc-sa-resource .osui-radio-group .ant-radio-button-wrapper:first-child:not(.ant-radio-button-wrapper-disabled):not(.ant-radio-button-wrapper-checked) {
+            //    &:hover {
+            //        border: none;
+            //    }
+            //
+            //    border: none;
+            //}
+
+            //.osc-sa-resource .ant-radio-button-wrapper:not(:first-child)::before {
+            //    width: 0;
+            //}
+
+            //.osc-sa-resource .ant-radio-button-wrapper-checked:not([class*=' ant-radio-button-wrapper-disabled']).ant-radio-button-wrapper:first-child,
+            //.osc-sa-resource .osui-radio-group .ant-radio-button-wrapper:not(.ant-radio-button-wrapper-disabled):not(.ant-radio-button-wrapper-checked):hover {
+            //    border: none;
+            //}
+
+            //.osc-sa-resource .ant-radio-button-wrapper {
+            //    background-color: transparent;
+            //    color: #909AAA;
+            //    border: none;
+            //}
+
+            .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+                color: var(--theme-primary-color) !important;
+            }
+
+            .ant-tabs-tab-btn {
+                font-size: 14px;
+                font-weight: 400;
+                color: #878C96 !important;
+            }
+
+            // radio选项卡样式修改
+            .osc-sa-resource {
+                .ant-radio-button-wrapper:first-child {
+                    border: none;
+                }
+
+                .ant-radio-button-wrapper {
+                    height: 26px;
+                    line-height: 26px;
+                    border: none;
+                    background: transparent;
+                    border-radius: 4px !important;
+                    color: #878c96;
+                    transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+                    &:hover {
+                        color: #878c96;
+                    }
+                }
+
+                .ant-radio-button-wrapper-checked {
+                    background: #ffffff;
+                    color: #0c62ff;
+
+                    &:hover {
+                        color: #0c62ff;
+                    }
+                }
+
+                .ant-radio-button-wrapper:not(:first-child)::before {
+                    display: none;
+                }
+
+                .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within {
+                    box-shadow: 0 0 0 3px transparent !important;
+                }
+            }
+            // 图表样式
+            .line-chart-tooltip-container{
+                text-align: left;
+                .line-tooltip-item-container{
+                    display:flex;
+                    align-items:center;
+                    margin-top:5px;
+                }
+                .line-tooltip-item{
+                    display:flex;
+                    font-weight:bold;
+                    font-size:14px;
+                }
+            }
+        }
+    }
+}
+
+@border-radius-base: 4px;
+@primary-color: #0C62FF;
+
+/* 轨道 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(245, 245, 245, 0.4);
+}
+
+/*滚动条里面轨道*/
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* 滚动条 颜色 */
+::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--color-gray-6);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(245, 245, 245, 0.4);
+}
+
+.bscroll-indicator {
+    background: var(--color-gray-6) !important;
+}
+
+.spinPage {
+    padding: 24px;
+}
+
+.deny-button {
+    margin-right: 10px !important;
+}
+
+
+:root {
+    --active-color: #0C62FF;
+    --error-color: #ff5630;
+    // 日志页面高度
+    --step-log-height: 0;
+    --step-bottom-height: 0;
+    --log-container-bottom-height: 0;
+}
+
+.flex-justify-content-center {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-justify-content-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-justify-content-space-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-justify-content-flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.flex-align-item-center {
+    display: flex;
+    align-items: center;
+}
+
+.flex-justify-content-flex-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ellipsis-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+:root {
+    --active-color: #0C62FF;
+    --error-color: #ff5630;
+    // 日志页面高度
+    --step-log-height: 0;
+    --step-bottom-height: 0;
+    --log-container-bottom-height: 0;
+}
+
+.flex-justify-content-center {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-justify-content-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-justify-content-space-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-align-item-center {
+    display: flex;
+    align-items: center;
+}
+
+.flex-justify-content-flex-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ellipsis-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+// 单选button类型的选项卡 group样式
+
+.group-button-container {
+    padding: 3px 5px !important;
+    border-radius: 6px;
+    background: #f4f4f5;
+}
+
+// 隐藏滚动条
+.hidden-scroll {
+    overflow-y: overlay;
+    &::-webkit-scrollbar {
+        background-color: transparent !important;
+    }
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-track {
+        visibility: hidden;
+    }
+
+    &:hover {
+
+        &::-webkit-scrollbar-thumb,
+        &::-webkit-scrollbar-track {
+            visibility: visible;
+        }
+    }
+}

@@ -1,0 +1,4 @@
+plugin 'cocoapods-gitee-repo', :sources => [
+  'guo-CocoaPods'
+]
+

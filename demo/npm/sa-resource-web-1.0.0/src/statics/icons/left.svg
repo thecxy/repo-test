@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>1.通用/2.Icon图标/Line/Down</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="240" height="752"></rect>
+        <filter x="-5.4%" y="-1.2%" width="110.8%" height="103.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="4" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0352941176   0 0 0 0 0.117647059   0 0 0 0 0.258823529  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0352941176   0 0 0 0 0.117647059   0 0 0 0 0.258823529  0 0 0 0.31 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="主机管理" transform="translate(-88.000000, -509.000000)">
+            <rect fill="#FFFFFF" x="0" y="0" width="1440" height="800"></rect>
+            <g id="文件列表" transform="translate(64.000000, 49.000000)">
+                <g id="矩形">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <rect id="矩形" fill="#FBFBFB" x="0" y="0" width="240" height="752"></rect>
+                <g id="编组-3" transform="translate(16.000000, 90.000000)">
+                    <g id="树-文件备份-5" transform="translate(8.000000, 360.000000)">
+                        <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="200" height="36"></rect>
+                        <text id="Source" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#2E405E">
+                            <tspan x="20" y="22">开发环境主机组</tspan>
+                        </text>
+                        <g id="编组" transform="translate(0.000000, 10.000000)">
+                            <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="16" height="16"></rect>
+                            <path d="M12.9757359,5.15975994 C13.2100505,4.94674669 13.5899495,4.94674669 13.8242641,5.15975994 C14.0585786,5.37277319 14.0585786,5.7181359 13.8242641,5.93114915 L8.42426407,10.8402401 C8.18994949,11.0532533 7.81005051,11.0532533 7.57573593,10.8402401 L2.17573593,5.93114915 C1.94142136,5.7181359 1.94142136,5.37277319 2.17573593,5.15975994 C2.41005051,4.94674669 2.78994949,4.94674669 3.02426407,5.15975994 L8,9.68315624 L12.9757359,5.15975994 Z" id="Rectangle-2备份" fill="#1E2A3D" transform="translate(8.000000, 8.000000) rotate(-90.000000) translate(-8.000000, -8.000000) "></path>
+                        </g>
+                    </g>
+                    <g id="树-文件备份-5" transform="translate(8.000000, 360.000000)">
+                        <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="200" height="36"></rect>
+                        <g id="编组" transform="translate(0.000000, 10.000000)">
+                            <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="16" height="16"></rect>
+                            <path d="M12.9757359,5.15975994 C13.2100505,4.94674669 13.5899495,4.94674669 13.8242641,5.15975994 C14.0585786,5.37277319 14.0585786,5.7181359 13.8242641,5.93114915 L8.42426407,10.8402401 C8.18994949,11.0532533 7.81005051,11.0532533 7.57573593,10.8402401 L2.17573593,5.93114915 C1.94142136,5.7181359 1.94142136,5.37277319 2.17573593,5.15975994 C2.41005051,4.94674669 2.78994949,4.94674669 3.02426407,5.15975994 L8,9.68315624 L12.9757359,5.15975994 Z" id="Rectangle-2备份" fill="#1E2A3D" transform="translate(8.000000, 8.000000) rotate(-90.000000) translate(-8.000000, -8.000000) "></path>
+                        </g>
+                        <g id="folder-archive" transform="translate(0.000000, 10.000000)">
+                            <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="16" height="16"></rect>
+                            <path d="M12.9757359,5.15975994 C13.2100505,4.94674669 13.5899495,4.94674669 13.8242641,5.15975994 C14.0585786,5.37277319 14.0585786,5.7181359 13.8242641,5.93114915 L8.42426407,10.8402401 C8.18994949,11.0532533 7.81005051,11.0532533 7.57573593,10.8402401 L2.17573593,5.93114915 C1.94142136,5.7181359 1.94142136,5.37277319 2.17573593,5.15975994 C2.41005051,4.94674669 2.78994949,4.94674669 3.02426407,5.15975994 L8,9.68315624 L12.9757359,5.15975994 Z" id="Rectangle-2备份" fill="#1E2A3D" transform="translate(8.000000, 8.000000) rotate(-90.000000) translate(-8.000000, -8.000000) "></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

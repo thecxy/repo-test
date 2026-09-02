@@ -1,0 +1,5 @@
+@testhj:registry=http://test.gitee.work/artifactory/api/npm/Npm_local051001/
+//test.gitee.work/artifactory/api/npm/Npm_local051001/:_password=QVBBZlkxYWdCOGhSS1lSdkhMYnc0amtTN2Fo
+//test.gitee.work/artifactory/api/npm/Npm_local051001/:username=admin
+//test.gitee.work/artifactory/api/npm/Npm_local051001/:email=admin@artifactory.com
+//test.gitee.work/artifactory/api/npm/Npm_local051001/:always-auth=true

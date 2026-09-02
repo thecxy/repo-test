@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.InnerDependency=void 0;exports.InnerDependency=class{constructor(e,n){this.name=e,this.chains=[n]}};

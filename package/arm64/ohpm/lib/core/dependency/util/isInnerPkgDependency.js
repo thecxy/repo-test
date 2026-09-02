@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.isInnerPkgDependency=void 0;const e=/^(?:(\.\/)|(\.\\)|(file:\.\/)|(file:\.\\)|(\/)|(\\)|(file:\/)|(file:\\))/i,n=/^[a-z]/i;exports.isInnerPkgDependency=function(t){return t=t||"",e.test(t)||function(e){const t=e.replace(/file:/i,"");return n.test(t)&&!t.includes(":")}(t)};

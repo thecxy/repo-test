@@ -1,0 +1,4 @@
+string app_name 0x03000000
+string shared_desc 0x03000002
+media app_icon 0x03000001
+profile main_pages 0x03000003

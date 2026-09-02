@@ -1,0 +1,11 @@
+[global]
+index-url = http://admin:APAfY1agB8hRKYRvHLbw4jkS7ah@test.gitee.work/artifactory/api/pypi/Pypi_remote051901/simple
+
+[install]
+trusted-host =
+    192.168.80.50:31110
+    pypi.tuna.tsinghua.edu.cn
+    mirrors.aliyun.com
+    pypi.douban.com
+    pypi.mirrors.ustc.edu.cn
+    pypi.org

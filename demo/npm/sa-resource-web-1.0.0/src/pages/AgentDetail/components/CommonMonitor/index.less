@@ -1,0 +1,135 @@
+.common-monitor-container {
+    .flex-justify-content-flex-start;
+    .flex-align-item-center;
+    background: #FFF;
+    position: relative;
+    height: 84px;
+
+    &:hover {
+        background: #F4F4F5;
+
+        .left {
+            .handle-drag-css {
+                display: block;
+            }
+        }
+
+    }
+
+    .left {
+        height: 100%;
+        min-width: 150px;
+
+        &.bordered {
+            border-top: 1px solid #ECEDF0;
+        }
+
+        .handle-drag-css {
+            position: absolute;
+            left: 4px;
+            display: none;
+            color: #4D545E;
+            padding: 12px 4px;
+        }
+
+        .label-css {
+            padding: 12px 8px;
+            margin-left: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #878C96;
+            line-height: 22px;
+            min-width: 150px;
+
+            > .label-inner-css {
+                margin-bottom: 10px;
+            }
+        }
+
+    }
+
+    .right {
+        flex: 1;
+        .flex-justify-content-flex-start;
+        border-top: 1px solid #ECEDF0;
+        height: 100%;
+        padding-right: 8px;
+
+        .column1-css {
+            .flex-justify-content-flex-start;
+            align-items: flex-start;
+            padding: 12px 8px;
+            min-width: 150px;
+
+            .column1-label-css {
+                font-size: 14px;
+                font-weight: 600;
+                color: #2E405E;
+                line-height: 22px;
+                margin-right: 4px;
+                .ellipsis-text;
+                max-width: 80px;
+            }
+
+            .column1-value-css {
+                margin-right: 5px;
+                font-size: 14px;
+                font-weight: 500;
+                color: #878C96;
+                line-height: 22px;
+                align-self: flex-start;
+                white-space: nowrap;
+                .ellipsis-text;
+                width: 80px;
+                svg {
+                    margin-top: 3px;
+                }
+            }
+        }
+
+        .column2-css {
+            min-width: 500px;
+            .flex-justify-content-center;
+            .flex-align-item-center;
+        }
+
+        .column3-css {
+            padding: 12px 8px;
+            .flex-justify-content-flex-start;
+
+            .max-css,
+            .min-css,
+            .avg-css {
+                min-width: 130px;
+                .flex-justify-content-flex-start;
+                flex-direction: column;
+
+                .itemLabel {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #878C96;
+                    line-height: 22px;
+                    margin-bottom: 6px;
+                }
+
+                .itemValue {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #2E405E;
+                    line-height: 22px;
+                    width: 100px;
+                    .ellipsis-text;
+                }
+            }
+        }
+
+        .detail-button {
+            align-self: center;
+        }
+    }
+
+    .select-css {
+        min-width: 100px;
+        max-width: 150px;
+    }
+}

@@ -1,0 +1,92 @@
+.file-source-container {
+    width: 100%;
+    border-radius: 4px;
+
+    &.has-error {
+        border: 1px solid var(--error-color);
+    }
+
+    .layout-item {
+        min-height: 48px;
+        margin-bottom: 0;
+    }
+
+    > .file-from-server,
+    > .file-from-local {
+        border-radius: 4px;
+        background-color: #FFF;
+        box-sizing: border-box;
+        padding: 0 16px;
+        :global {
+            .ant-table-thead {
+                .ant-table-cell {
+                    background: #FFF;
+                    white-space: nowrap;
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: #878C96;
+                    line-height: 20px;
+                }
+            }
+        }
+        > .file-choose-tips {
+            width: 144px;
+            height: 22px;
+            font-size: 14px;
+            //font-weight: 600;
+            color: #1E2A3D;
+            line-height: 22px;
+        }
+
+        .add-button {
+            height: 32px;
+            border-radius: 4px;
+            padding: 0 20px;
+            margin-top: 24px;
+
+            > .upload-button {
+                display: none;
+            }
+        }
+    }
+
+    > .file-from-server {
+        margin-bottom: 16px;
+    }
+
+    :global {
+        .retry-button,
+        .delete-button {
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .retry-button {
+            color: var(--theme-primary-color);
+        }
+
+        .delete-button {
+            color: var(--theme-error-color);
+            cursor: pointer;
+            font-size: 12px;
+
+            &.server-button {
+                display: inline-block;
+                margin-bottom: 14px;
+            }
+
+            &.disabled {
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    color: var(--error-color);
+}

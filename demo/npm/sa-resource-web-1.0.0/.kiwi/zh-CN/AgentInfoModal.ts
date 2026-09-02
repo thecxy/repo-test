@@ -1,0 +1,21 @@
+export default {
+  index: {
+    xuanZeMiYao: '选择密钥',
+    qingXuanZeMiYao: '请选择密钥文件',
+    miYao: '密钥',
+    qingShuRuMiMa: '请输入密码',
+    qingShuRuCurrentMiMa: '请输入当前登录用户密码',
+    miMa: '密码',
+    qingShuRuYongHu: '请输入用户名',
+    yongHuMing: '用户名',
+    qingShuRuDuanKou: '请输入端口',
+    duanKou: '端口',
+    qingShuRuZhuJi: '请输入主机名称',
+    zhuJiMingCheng: '主机名称',
+    qingShuRuZhuJi2: '请输入主机IP',
+    zhuJiIP: '主机IP',
+    qingXuanZeLianJie: '请选择连接方式',
+    lianJieFangShi: '连接方式',
+    wEBTE: 'Web Terminal 信息配置',
+  },
+};

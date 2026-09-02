@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <!-- 使用说明：一般情况 maven 的通用 settings.xml 在 .m2 文件夹下, 项目内 settings.xml 也可以进行设置，优先级更高 -->
+
+    <!-- 平台认证信息-->
+    <!-- ！！！请妥善保管好您的配置，不要随意分享给他人-->
+    <servers>
+        <server>
+           <id>repo</id>
+           <username>admin</username>
+           <password>AP2vNoP9xihwubE8qAFWAcJH8kM</password>
+        </server>
+        <server>
+           <id>central</id>
+           <username>admin</username>
+           <password>AP2vNoP9xihwubE8qAFWAcJH8kM</password>
+        </server>
+        <server>
+            <id>snapshots</id>
+            <username>admin</username>
+            <password>AP2vNoP9xihwubE8qAFWAcJH8kM</password>
+        </server>
+    </servers>
+    <!-- 镜像配置列表 -->
+    <mirrors>
+        <!-- 指定要使用的存储库镜像地址，通过id标签匹配，id需要在镜像列表中唯一
+             此配置避免了本仓库制品的拉取流量被切换到其他像源，保证您在使用镜像加速的同时可以从本仓库拉取制品 -->
+        <mirror>
+            <id>repo</id>
+            <name>repo</name>
+            <url>http://192.168.48.127:8000/repo/repository/demo-maven-vr</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+    </mirrors>
+    <!-- 配置文件列表，可以通过多种方式激活，并且可以修改构建过程 -->
+    <profiles>
+        <profile>
+            <!-- id必须配置文件列表唯一 建议遵循约定命名规则 比如: env-dev,env-test,env-prod -->
+            <id>repo</id>
+
+            <!-- 是否激活配置 -->
+            <activation>
+                <!-- 当配置文件列表中没有设置激活配置且默认配置为true时，默认激活此配置
+                     注意：当多个配置都设置了默认配置为true时，遵循先后顺序原则，先设置的会被覆盖-->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <!-- 仓库配置列表-->
+            <repositories>
+                <!-- 基本仓库信息， 存放第三方依赖  -->
+                <repository>
+                    <id>central</id>
+                    <name>repo</name>
+                    <url>http://192.168.48.127:8000/repo/repository/demo-maven-vr</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <!-- 快照仓库信息 maven会优先获取最新的快照版本-->
+                <repository>
+                    <id>snapshots</id>
+                    <name>repo</name>
+                    <url>http://192.168.48.127:8000/repo/repository/demo-maven-vr</url>
+                    <snapshots />
+                </repository>
+            </repositories>
+            <!-- maven插件仓库地址信息，存放maven插件依赖 -->
+            <pluginRepositories>
+                <!-- 基本仓库信息 -->
+                <pluginRepository>
+                    <id>central</id>
+                    <name>repo</name>
+                    <url>http://192.168.48.127:8000/repo/repository/demo-maven-vr</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <!-- 快照仓库信息 maven会优先获取最新的快照版本 -->
+                <pluginRepository>
+                    <id>snapshots</id>
+                    <name>repo</name>
+                    <url>http://192.168.48.127:8000/repo/repository/demo-maven-vr</url>
+                    <snapshots />
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+</settings>

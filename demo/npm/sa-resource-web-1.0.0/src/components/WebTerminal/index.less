@@ -1,0 +1,25 @@
+@import 'xterm/css/xterm.css';
+
+.web-terminal-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    .terminal-header {
+        height: 36px;
+        padding: 8px 24px;
+        background-color: #2e3645;
+        color: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .terminal-body {
+        flex: 1;
+        background-color: #151723;
+    }
+}

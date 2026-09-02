@@ -1,0 +1,33 @@
+.pre-container {
+    display: block;
+    line-height: 20px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 0;
+    background-color: rgb(29, 42, 60) !important;
+    margin: 2px !important;
+    // 主动换行
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    overflow: auto;
+    word-break: break-all;
+
+    .link {
+        position: relative;
+        top: 2px;
+        color: #fff;
+        visibility: hidden;
+        cursor: pointer;
+        margin-left: 8px;
+    }
+
+    &:hover {
+        background: #3C4655 !important;
+
+        .link {
+            visibility: visible;
+        }
+    }
+}

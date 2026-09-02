@@ -1,0 +1,68 @@
+name: 'Integration Test : Enterprise Nightly'
+
+concurrency:
+  # Run only for most recent commit in PRs but for all tags and commits on main
+  # Ref: https://docs.github.com/en/actions/using-jobs/using-concurrency
+  group: ${{ github.workflow }}-${{ github.head_ref || github.sha }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+    - 'main'
+    - 'release/*'
+  pull_request:
+    branches:
+    - '*'
+
+jobs:
+  secret-available:
+    outputs:
+      ok: ${{ steps.exists.outputs.ok }}
+    runs-on: ubuntu-latest
+    env:
+      PULP_PASSWORD: ${{ secrets.PULP_PASSWORD }}
+    steps:
+    - name: check for secret availability
+      id: exists
+      run: |
+        if [ ! -z "$PULP_PASSWORD" ]; then
+          echo "ok=true" >> $GITHUB_OUTPUT
+        fi
+
+  test-enterprise:
+    continue-on-error: true
+    needs:
+    - secret-available
+    if: needs.secret-available.outputs.ok
+    env:
+      KONG_ADMIN_TOKEN: kong
+      KONG_IMAGE_REPO: "kong/kong-gateway-internal"
+      KONG_IMAGE_TAG: "master-alpine"
+      KONG_ANONYMOUS_REPORTS: "off"
+      TEST_KONG_PULL_USERNAME: ${{ secrets.GHA_DOCKERHUB_PULL_USER }}
+      TEST_KONG_PULL_PASSWORD: ${{ secrets.GHA_KONG_ORG_DOCKERHUB_PUBLIC_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      # This will set KONG_LINCENSE_DATA environment variable.
+      - uses: Kong/kong-license@master
+        id: license_step
+        with:
+          password: ${{ secrets.PULP_PASSWORD }}
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '^1.19'
+      - name: Setup Kong
+        run: make setup-kong-ee
+      - name: Run tests
+        run: make test-coverage-enterprise
+      - name: Upload Code Coverage
+        uses: codecov/codecov-action@v3.1.4
+        continue-on-error: true
+        with:
+          name: codecov-enterprise-nightly
+          flags: enterprise-nightly,integration,enterprise
+          fail_ci_if_error: true

@@ -1,0 +1,55 @@
+@containerWidth: calc(1440px - 8px * 2);
+@rightWidth: calc(308px * 2 + 16px);
+.executive-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .inner {
+        flex: 1;
+        min-width: ~"calc(@{containerWidth} - 56px)";
+        max-width: @containerWidth;
+        flex-direction: column;
+        background: #FFF;
+        box-shadow: 0 1px 1px 0 rgba(9,30,66,0.25), 0 0 1px 0 rgba(9,30,66,0.31);
+        padding: 16px;
+        .fetch-loading {
+            display: none;
+        }
+
+        .operation-container {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        :global {
+            th.ant-table-cell {
+                background-color: #FFF !important;
+            }
+
+            .ant-tabs-nav {
+                padding: 0;
+            }
+        }
+    }
+}
+
+:global(.running-icon) {
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    animation: spin 1s linear infinite !important;
+
+    > svg {
+        width: 32px;
+        height: 32px;
+        color: var(--theme-primary-color);
+    }
+}

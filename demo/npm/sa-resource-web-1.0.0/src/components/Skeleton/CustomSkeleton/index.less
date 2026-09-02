@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  :global {
+    .ant-skeleton-content {
+      .ant-skeleton-title {
+        margin-top: 0;
+      }
+      .ant-skeleton-paragraph {
+        margin: 0 !important;
+        > li + li {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}

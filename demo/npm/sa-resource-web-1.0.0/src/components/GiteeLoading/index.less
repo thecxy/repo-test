@@ -1,0 +1,23 @@
+@keyframes gitee-loader-ani {
+    0% {
+        stroke-dasharray: 0, 600
+    }
+
+    50% {
+        stroke-dasharray: 600, 600;
+        fill: rgba(199, 29, 35, 0);
+        opacity: 1
+    }
+
+    to {
+        stroke-dasharray: 600, 600;
+        fill: #c71d23;
+        opacity: 1
+    }
+}
+
+.gitee-loader-path {
+    stroke-width: 1;
+    stroke: #c71d23;
+    animation: gitee-loader-ani 3s ease-out infinite;
+}

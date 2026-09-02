@@ -1,0 +1,60 @@
+export default {
+  AgentConfig: {
+    aGENT: 'Agent 配置',
+    aGENT2: 'Agent执行用户',
+    aGENT3: 'Agent安装路径',
+    qingShuRuDeZheng: '请输入0 - 9999 的整数，如不限制可不填写',
+    aGENT4: 'Agent并发限制',
+    aGENT5: 'Agent版本',
+    wuXianZhi: '无限制',
+  },
+  CPURate: {
+    cPULiYong: 'CPU 利用率 (%)',
+    zongLiang: '总量',
+    dangQian: '当前',
+    shiYongLu: '使用率',
+  },
+  EssentialInfo: {
+    zhuJiXinXi: '主机信息',
+    miaoShu: '描述',
+    caoZuoXiTong: '操作系统',
+    cPUGE: 'CPU: {val1} 内存：{val2}',
+    zhuJiGuiGe: '主机规格',
+    xiTongYingPan: '系统硬盘',
+    zhuangTai: '状态',
+    zhuJiMingChengBu: '主机名称不能为空',
+    mingCheng: '名称',
+  },
+  MemoryRate: {
+    neiCunShiYongLiang: '内存使用量 (MB)',
+    shiYongLiang: '使用量',
+  },
+  NetworkConfig: {
+    wangKaPeiZhi: '网卡配置',
+    mACDiZhi: 'Mac地址',
+  },
+  PublicNetworkBandwidth: {
+    dangQian: '当前:',
+    gongWangDaiKuanShi: '公网带宽使用（Mbps）',
+    cURRO: '{val1} (出)',
+    cURRI: '{val1} (入)',
+    chu: '出',
+    ru: '入',
+  },
+  RecentOnlineTrajectory: {
+    jinQiShangXianGui: '近期上线轨迹',
+  },
+  ResourceStores: {
+    yiShiYong: '已使用',
+    cunChuZiYuan: '存储资源',
+    rongLiang: '容量',
+    weiShiYong: '未使用',
+  },
+  SystemIO: {
+    xiTongPanIO: '系统盘IO（KB/s）',
+    cURRO: '{val1} (读)',
+    cURRI: '{val1} (写)',
+    du: '读',
+    xie: '写',
+  },
+};

@@ -1,0 +1,2 @@
+pyyaml<4,>=3
+slackclient<2,>=1

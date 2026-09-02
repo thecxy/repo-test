@@ -1,0 +1,58 @@
+# ---------- 构建阶段 ----------
+    FROM docker-hub.gitee.work/gitee-poc/autotest-base-dind:0625-10 AS build
+
+    ARG GO_VERSION=1.21.5
+    ARG MAVEN_VERSION=3.8.9
+    ENV MAVEN_HOME=/opt/maven
+    
+    ARG TARGETARCH
+    RUN case "${TARGETARCH}" in \
+            "amd64") GO_ARCH="amd64" ;; \
+            "arm64") GO_ARCH="arm64" ;; \
+            *) echo "Unsupported architecture: ${TARGETARCH}" && exit 1 ;; \
+        esac && \
+        apk add --no-cache \
+            openjdk17 \
+            jq \
+            tar \
+            xz \
+            helm && \
+        curl -fsSL https://mirrors.aliyun.com/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
+            | tar -xz -C /opt && \
+        ln -s /opt/apache-maven-${MAVEN_VERSION} ${MAVEN_HOME} && \
+        curl -fsSL https://go.dev/dl/go${GO_VERSION}.linux-${GO_ARCH}.tar.gz \
+            | tar -C /usr/local -xzf - && \
+        rm -rf /usr/local/go/test /usr/local/go/doc /usr/local/go/misc /usr/local/go/pkg/mod/cache \
+               /var/cache/apk/* /tmp/* /usr/share/man /root/.m2
+       
+    
+    # ---------- 最终镜像 ----------
+    FROM docker-hub.gitee.work/gitee-poc/autotest-base-dind:0625-10
+    
+    # 基础工具
+    RUN apk add --no-cache \
+            jq \
+            py3-pip \
+            # py3-build \
+            # py3-twine \
+            # py3-setuptools \
+            vim
+    
+    # 拷贝 Python、Go、Java、Maven、Helm
+    COPY --from=build /usr/local/go /usr/local/go
+    COPY --from=build /usr/lib/jvm/java-17-openjdk /usr/lib/jvm/java-17-openjdk
+    COPY --from=build /opt/apache-maven-3.8.9 /opt/apache-maven-3.8.9
+    COPY --from=build /opt/maven /opt/maven
+    COPY --from=build /usr/bin/helm /usr/bin/helm
+    
+   
+    # 设置环境变量
+    ENV    JAVA_HOME=/usr/lib/jvm/java-17-openjdk 
+    ENV    MAVEN_HOME=/opt/maven 
+    ENV    PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:/usr/local/go/bin:$PATH
+    
+    # 示例代码目录
+    COPY demo/ /root/demo
+    WORKDIR /root
+    
+    CMD ["bash"]

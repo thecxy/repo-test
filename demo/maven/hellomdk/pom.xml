@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.gitee.mdk</groupId>
+  <artifactId>test111</artifactId>
+  <version>3.8.5</version>
+  <packaging>jar</packaging>
+  <name>hellomdk111</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <!-- Use the latest version -->
+        <configuration>
+          <source>1.8</source>
+          <!-- Replace with your desired Java version -->
+          <target>1.8</target>
+          <!-- Replace with your desired Java version -->
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+<!-- 使用方式：将此段配置添加到目标工程的.pom文件，
+        <distributionManagement>为一级标签，标签元素包含制品库url地址  -->
+
+<distributionManagement>
+  <!--必须与 settings.xml 的 id 一致-->
+  <repository>
+      <id>central</id>
+      <name>repo-releases</name>
+      <url>http://192.168.48.127:8000/repo/repository/demo-maven-vr</url>
+  </repository>
+  <snapshotRepository>
+      <id>snapshots</id>
+      <name>repo-snapshots</name>
+      <url>http://192.168.48.127:8000/repo/repository/demo-maven-vr</url>
+  </snapshotRepository>
+</distributionManagement>
+
+  <dependencies>
+<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+	  <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

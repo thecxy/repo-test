@@ -1,0 +1,28 @@
+.bar-charts-container {
+    .flex-align-item-center;
+    .flex-justify-content-center;
+    flex: 1;
+
+    .bar-charts {
+        text-align: center;
+    }
+}
+
+:global {
+    .bar-chart-tooltip-container {
+        .bar-tooltip-item-container{
+            display:flex;
+            align-items:center;
+            margin-top:5px;
+            > span{
+                background-color: #0C62FF !important;
+            }
+        }
+        .bar-tooltip-item{
+            display:flex;
+            font-weight:bold;
+            font-size:14px;
+        }
+    }
+}
+

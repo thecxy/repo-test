@@ -1,0 +1,1 @@
+. "/root/demo/conan/hello/test_package/conanbuildenv-release-x86_64.sh"

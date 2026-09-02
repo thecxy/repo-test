@@ -1,0 +1,34 @@
+@containerWidth : calc(1440px - 8px * 2);
+@rightWidth:calc(308px * 2 + 16px);
+
+.task-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .inner {
+        flex: 1;
+        min-width: ~"calc(@{containerWidth} - 56px)";
+        max-width: @containerWidth;
+        flex-direction: column;
+        .flex-justify-content-center;
+        background: #FFF;
+        box-shadow: 0 1px 1px 0 rgba(9,30,66,0.25), 0 0 1px 0 rgba(9,30,66,0.31);
+        padding: 16px;
+    }
+
+    :global {
+        th.ant-table-cell {
+            background-color: #FFF !important;
+        }
+
+        .ant-tabs-content {
+            height: 0;
+        }
+
+        .ant-tabs-nav {
+            padding: 0;
+        }
+    }
+}

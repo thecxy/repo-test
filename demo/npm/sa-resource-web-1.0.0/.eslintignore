@@ -1,0 +1,7 @@
+/dist
+/node_modules
+/.git
+/webpack
+/src/statics
+.eslintrc.js
+vite.config.ts

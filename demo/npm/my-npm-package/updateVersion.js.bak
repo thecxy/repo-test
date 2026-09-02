@@ -1,0 +1,26 @@
+const fs = require('fs');
+const path = require('path');
+
+// 读取 package.json 文件
+const packageJsonPath = path.join(__dirname, 'package.json');
+const packageJson = require(packageJsonPath);
+
+// 修改版本号
+const currentVersion = packageJson.version;
+const newVersion = incrementVersion(currentVersion);
+packageJson.version = newVersion;
+
+// 写回 package.json 文件
+fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+
+console.log(`Version updated from ${currentVersion} to ${newVersion}`);
+
+// 版本号递增函数
+function incrementVersion(version) {
+  const versionParts = version.split('.');
+  const lastPart = versionParts[versionParts.length - 1];
+  const lastNumber = parseInt(lastPart.match(/\d+/)[0], 10);
+  const incrementedNumber = lastNumber + 1;
+  versionParts[versionParts.length - 1] = lastPart.replace(/\d+/, incrementedNumber);
+  return versionParts.join('.');
+}

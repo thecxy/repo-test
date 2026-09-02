@@ -1,0 +1,56 @@
+FROM repo:allin
+
+# 0. 安装 zsh（必要前提）
+RUN apt-get update && apt-get install -y \
+    zsh \
+ && rm -rf /var/lib/apt/lists/*
+
+ENV ZSH=/root/.oh-my-zsh
+
+# ===============================
+# 1. 安装 Oh My Zsh（非交互）
+# ===============================
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# ===============================
+# 2. 安装第三方插件
+# ===============================
+RUN git clone https://github.com/zsh-users/zsh-completions \
+        ${ZSH}/custom/plugins/zsh-completions \
+ && git clone https://github.com/zsh-users/zsh-autosuggestions \
+        ${ZSH}/custom/plugins/zsh-autosuggestions \
+ && git clone https://github.com/zsh-users/zsh-syntax-highlighting \
+        ${ZSH}/custom/plugins/zsh-syntax-highlighting
+
+# ===============================
+# 3. 固化最终 .zshrc
+# ===============================
+RUN cat > /root/.zshrc << 'EOF'
+export ZSH="$HOME/.oh-my-zsh"
+
+# 让 zsh 能找到补全
+fpath+=${ZSH}/custom/plugins/zsh-completions/src
+
+plugins=(
+  git
+  docker
+  extract
+  sudo
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+EOF
+
+# ===============================
+# 4. 安装 starship（如你之前要求）
+# ===============================
+RUN curl -fsSL https://starship.rs/install.sh | sh -s -- -y \
+ && echo 'eval "$(starship init zsh)"' >> /root/.zshrc
+
+ # ===============================
+# 5. 默认进入 zsh
+# ===============================
+CMD ["zsh"]

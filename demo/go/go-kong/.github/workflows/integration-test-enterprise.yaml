@@ -1,0 +1,93 @@
+name: 'Integration Test : Enterprise'
+
+concurrency:
+  # Run only for most recent commit in PRs but for all tags and commits on main
+  # Ref: https://docs.github.com/en/actions/using-jobs/using-concurrency
+  group: ${{ github.workflow }}-${{ github.head_ref || github.sha }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+    - 'main'
+    - 'release/*'
+  pull_request:
+    branches:
+    - '*'
+
+jobs:
+  secret-available:
+    outputs:
+      ok: ${{ steps.exists.outputs.ok }}
+    runs-on: ubuntu-latest
+    env:
+      PULP_PASSWORD: ${{ secrets.PULP_PASSWORD }}
+    steps:
+    - name: check for secret availability
+      id: exists
+      run: |
+        if [ ! -z "$PULP_PASSWORD" ]; then
+          echo "ok=true" >> $GITHUB_OUTPUT
+        fi
+
+  test-enterprise:
+    continue-on-error: true
+    needs:
+    - secret-available
+    if: needs.secret-available.outputs.ok
+    strategy:
+      matrix:
+        kong_version:
+        - '2.2.1.3'
+        - '2.3.3.4'
+        - '2.4.1.3'
+        - '2.5.1.2'
+        - '2.6.1.0'
+        - '2.7.2.0'
+        - '2.8.4.0'
+        - '3.0.2.0'
+        - '3.1.1.3'
+        - '3.2.2.1'
+    env:
+      KONG_IMAGE_TAG: ${{ matrix.kong_version }}
+      KONG_ANONYMOUS_REPORTS: "off"
+      KONG_ADMIN_TOKEN: kong
+    runs-on: ubuntu-latest
+    steps:
+      # This will set KONG_LINCENSE_DATA environment variable.
+      # NOTE:
+      # This could be (?) made a shared step but for some reason it's impossible
+      # to override:
+      # Warning: Skip output 'license' since it may contain secret.
+      # on Github Actions when setting a job output.
+      - uses: Kong/kong-license@master
+        id: license_step
+        with:
+          password: ${{ secrets.PULP_PASSWORD }}
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup go
+        uses: actions/setup-go@v4
+        with:
+          go-version-file: go.mod
+      - name: Setup Kong
+        run: make setup-kong-ee
+      - name: Run tests
+        run: make test-coverage-enterprise
+      - name: Upload Code Coverage
+        uses: codecov/codecov-action@v3.1.4
+        continue-on-error: true
+        with:
+          name: codecov-${{ matrix.kong_version }}
+          flags: ${{ matrix.kong_version }},integration,enterprise
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+
+  test-enterprise-passed:
+    runs-on: ubuntu-latest
+    needs: test-enterprise
+    if: always()
+    steps:
+    - name: Set workflow outcome
+      if: needs.test-enterprise.result == 'failure' || needs.test-enterprise.result == 'cancelled'
+      run: ${{ false }}

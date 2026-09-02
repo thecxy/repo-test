@@ -1,0 +1,1 @@
+. "/root/demo/conan/mypkg/build/Release/generators/conanrunenv-release-x86_64.sh"

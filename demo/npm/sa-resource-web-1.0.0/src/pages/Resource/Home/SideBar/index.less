@@ -1,0 +1,74 @@
+.side-bar {
+    width: 100%;
+    padding: 24px 0 24px 8px;
+    height: 100%;
+    font-size: 24px;
+    color: #1E2A3D;
+    margin-left: 1px;
+    background: #FBFBFB;
+    box-shadow: 0 4px 8px -2px rgba(9, 30, 66, 0.25), 0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    border-radius: 4px 0 0 4px;
+    z-index: 9;
+
+    >.title {
+        height: 22px;
+        line-height: 24px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        color: #091E42;
+        margin-bottom: 16px;
+        padding-left: 8px;
+    }
+}
+
+.tree-placeholder {
+    width: 20px;
+    height: 100%;
+    padding: 24px 0;
+    margin-left: 1px; //展示box-shadow 不加的话会被one的给盖掉
+    background: #FBFBFB;
+    box-shadow: 0 4px 8px -2px rgba(9, 30, 66, 0.25), 0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    border-radius: 4px 0 0 4px;
+    z-index: 9;
+}
+
+.container {
+    min-width: 20px;
+    height: 100%;
+    position: relative;
+}
+
+.side-bar-selector {
+    transition: all .3s;
+    cursor: pointer;
+    z-index: 10;
+    position: absolute;
+    left: calc(~"100% - 10px");
+    top: 20px;
+    width: 24px;
+    text-align: center;
+    .flex-align-item-center;
+    .flex-justify-content-center;
+    line-height: 24px;
+    height: 24px;
+    background: #FBFBFB;
+    box-shadow: 0 4px 8px -2px rgba(9, 30, 66, 0.25), 0px 0px 1px 0px rgba(9, 30, 66, 0.31);
+    border-radius: 12px;
+
+    &.visible {
+        >svg {
+            transform: rotate(180deg);
+        }
+    }
+
+    >svg {
+        transform: rotate(0deg);
+    }
+}

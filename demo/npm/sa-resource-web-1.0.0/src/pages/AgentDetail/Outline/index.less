@@ -1,0 +1,42 @@
+@containerWidth : calc(1440px - 8px * 2);
+@rightWidth:calc(308px * 2 + 16px);
+.outline-container {
+    flex:1;
+    .flex-justify-content-center;
+
+    .inner {
+        flex:1;
+        min-width: ~"calc(@{containerWidth} - 240px)";
+        max-width: @containerWidth;
+        .flex-justify-content-center;
+
+        .left {
+            min-width: 1px;
+            max-width: calc(~"@{containerWidth} - 632px - 64px");
+            flex: 1;
+        }
+
+        .right {
+            width: @rightWidth;
+            .flex-justify-content-flex-start;
+            flex-direction: column;
+        }
+    }
+
+    .cpu-and-memory {
+        height: 242px;
+        .flex-justify-content-flex-start;
+        width: @rightWidth;
+    }
+
+    :global {
+        div.ant-typography-edit-content {
+            margin-bottom: 0 !important;
+            flex: 1;
+        }
+
+        div.ant-typography, .osc-sa-resource .ant-typography p {
+            margin-bottom: 0;
+        }
+    }
+}

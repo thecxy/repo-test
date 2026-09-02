@@ -1,0 +1,11 @@
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/bin/Release/net10.0/MyTestPackageNuget.deps.json
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/bin/Release/net10.0/MyTestPackageNuget.dll
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/bin/Release/net10.0/MyTestPackageNuget.pdb
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/obj/Release/net10.0/MyTestPackageNuget.GeneratedMSBuildEditorConfig.editorconfig
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/obj/Release/net10.0/MyTestPackageNuget.AssemblyInfoInputs.cache
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/obj/Release/net10.0/MyTestPackageNuget.AssemblyInfo.cs
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/obj/Release/net10.0/MyTestPackageNuget.csproj.CoreCompileInputs.cache
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/obj/Release/net10.0/MyTestPackageNuget.dll
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/obj/Release/net10.0/refint/MyTestPackageNuget.dll
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/obj/Release/net10.0/MyTestPackageNuget.pdb
+/root/demo/nuget/nugetapp/tmp_build_dir/MyTestPackageNuget/obj/Release/net10.0/ref/MyTestPackageNuget.dll

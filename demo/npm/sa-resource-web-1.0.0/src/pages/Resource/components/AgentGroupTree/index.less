@@ -1,0 +1,100 @@
+.tree-container {
+    overflow:hidden;
+    border-radius: 0;
+    width: 100%;
+    max-height: calc(~'100% - 37px');
+    padding-right:8px;
+    .hidden-scroll;
+
+    .disabled-css {
+        cursor: not-allowed;
+    }
+    :global{
+        .ant-tree {
+            .ant-tree-switcher {
+                width: 16px;
+                color:#4d545e;
+            } 
+        }
+    }
+}
+
+.moving{
+    &:hover {
+
+        &::-webkit-scrollbar-thumb,
+        &::-webkit-scrollbar-track {
+            visibility: hidden;
+        }
+    }
+}
+
+:global {
+    .ant-tree-treenode-selected {
+        background: #D4D6D9;
+        .flex-justify-content-flex-start;
+        .flex-align-item-center;
+        height: 36px;
+        border-radius: 4px;
+    }
+
+    .osc-sa-resource .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
+        background: transparent !important;
+        color: var(--theme-primary-color);
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .osc-sa-resource .ant-tree-indent-unit{
+        width: 18px !important;
+    }
+    .osc-sa-resource .ant-tree .ant-tree-treenode {
+        align-items: center !important;
+        padding: 0 !important;
+            padding-left:8px !important;
+    }
+
+    .osc-sa-resource .ant-tree .ant-tree-node-content-wrapper{
+        padding:0 0 0 4px !important;
+    }
+
+    .osc-sa-resource .ant-tree .ant-tree-node-content-wrapper:hover {
+        background-color: transparent !important;
+    }
+
+    .ant-tree-title,
+    .ant-tree-node-content-wrapper.ant-tree-node-content-wrapper-normal {
+        &:focus-visible {
+            outline: none !important;
+        }
+    }
+
+    .ant-tree-treenode {
+        border-radius: 4px !important;
+            &:hover {
+                &:not(.ant-tree-treenode-selected){
+                    background: #F4F4F5 !important;
+                }
+                .ant-tree-node-content-wrapper .ant-tree-title {
+                    > div{
+                        > div:first-child{
+                            visibility: visible;
+                        }
+                        > div:last-child{
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+    }
+
+    .ant-tree-switcher {
+        .flex-justify-content-center;
+        .flex-align-item-center;
+    }
+
+    .ant-tree-switcher.ant-tree-switcher-noop {
+        display: none;
+    }
+}
+
+
