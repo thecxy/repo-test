@@ -19,12 +19,15 @@ ENV TZ=Asia/Shanghai \
 # DART_ARCH differs for the amd64 case (Dart archives use x64 instead of amd64)
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
         ARCH_TAG="amd64"; \
+        CONDA_ARCH="x86_64"; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
         ARCH_TAG="arm64"; \
+        CONDA_ARCH="aarch64"; \
     else \
         echo "❌ Unsupported architecture: $TARGETARCH" && exit 1; \
     fi && \
-    echo "ARCH_TAG=$ARCH_TAG" >> /etc/environment 
+    echo "ARCH_TAG=$ARCH_TAG" >> /etc/environment && \
+    echo "CONDA_ARCH=$CONDA_ARCH" >> /etc/environment
 
 SHELL ["/bin/bash", "-c"]
 
