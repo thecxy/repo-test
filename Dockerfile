@@ -33,7 +33,7 @@ RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # 基础工具和语言环境（不区分架构，但包含了构建工具和一些常用语言环境，且清理了缓存和不必要的文件以减小镜像体积）
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    zsh vim jq rsync unzip sudo zip bzip2 cmake build-essential openssl ca-certificates \
+    zsh vim jq rsync unzip zip bzip2 cmake build-essential openssl ca-certificates \
     openjdk-17-jdk  nodejs npm  && \
     rm -rf /var/lib/apt/lists/*
 
