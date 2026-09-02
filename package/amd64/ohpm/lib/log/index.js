@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});const e=require("./Log4js");exports.default=e.log;

@@ -1,1 +1,0 @@
-. "/root/demo/conan/mypkg/build/Release/generators/deactivate_conanrunenv-release-x86_64.sh"

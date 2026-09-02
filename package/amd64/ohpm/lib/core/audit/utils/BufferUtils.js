@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.BufferUtils=void 0;exports.BufferUtils=class{static freeBuffer(e){e&&(e.fill(0),e=null)}};

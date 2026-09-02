@@ -1,1 +1,0 @@
-{"app":{"bundleName":"com.example.myapplication","bundleType":"app","versionCode":1000000,"versionName":"1.0.0","minAPIVersion":50000012,"targetAPIVersion":50000012,"apiReleaseType":"Beta1"},"module":{"name":"lctestShared","type":"shared","deliveryWithInstall":true,"deviceTypes":["phone","tablet","2in1"],"dependencies":[]}}

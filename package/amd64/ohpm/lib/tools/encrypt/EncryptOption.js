@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.EncryptOption=void 0;exports.EncryptOption=class{constructor(t){this._algorithm="aes-128-gcm",this._algorithm=t}get algorithm(){return this._algorithm}set algorithm(t){this._algorithm=t}};

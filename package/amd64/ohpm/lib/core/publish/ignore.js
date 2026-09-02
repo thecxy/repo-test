@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ignore=void 0;const e=require("../../common/Constants");exports.ignore=[".gitignore",".npmignore",`.${e.Constants.PM}ignore`];

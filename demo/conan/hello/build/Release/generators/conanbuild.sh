@@ -1,1 +1,0 @@
-. "/opt/demo/conan/hello/build/Release/generators/conanbuildenv-release-x86_64.sh"
