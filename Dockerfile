@@ -12,9 +12,7 @@ ENV TZ=Asia/Shanghai \
     GO_VERSION=1.22.3 \
     HELM_VERSION=3.14.4 \
     DOCKER_TLS_CERTDIR="" \
-    Nerdctl_VERSION=1.7.5 \
     DEBIAN_FRONTEND=noninteractive \
-    PIP_BREAK_SYSTEM_PACKAGES=1 \
     ZSH=/root/.oh-my-zsh \
     PATH="/opt/venv/bin:$PATH"
 
