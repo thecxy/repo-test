@@ -146,7 +146,7 @@ RUN git clone https://github.com/zsh-users/zsh-completions \
 # ===============================
 # 3. 固化最终 .zshrc
 # ===============================
-RUN cat > /root/.zshrc << 'EOF'
+RUN cat > /root/.zshrc <<'EOF'
 export ZSH="$HOME/.oh-my-zsh"
 
 # 设置本地化环境 / 语言环境
